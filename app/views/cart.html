@@ -1,1 +1,11 @@
-<p>This is the cart view.</p>
+<div ng-controller="CartCtrl">
+	<h1>Cart</h1>
+<h4>Cart items {{totalItems}}</h4>
+
+<div ng-repeat="(itemKey,itemVal) in cartItems" ng-attr-id="{{itemKey}}"><button ng-click="removeItem(itemKey)" id='btn'>remove</button>&nbsp;{{itemVal.name}}
+</div>
+
+<button ng-click="deleteCart()" class="btn btn-primary" id='btn1'>{{cartStatus}}</button>
+<button ng-click="checkout()" class="btn btn-danger" id='btn2'>Checkout</button>
+
+</div>

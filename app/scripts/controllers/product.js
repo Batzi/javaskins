@@ -4,15 +4,20 @@ angular.module('storefrontApp')
   .controller('ProductCtrl', function ($scope, product, moltin, $timeout) {
     $scope.product = product;
     $scope.addStatus = null;
+    $scope.cartStatus = 'Empty cart';
 
-    console.log(product);
+    moltin.Cart.Contents(function(items){
+
+    	$scope.totalItems = items.total_items;
+    	$scope.$apply();
+    });
 
     $scope.addCart = function(){
 
     	$scope.addStatus = 'Adding to cart...';
     	moltin.Cart.Insert(product.id, 1, null, function(){
 
-    		$scope.addStatus='Success!';
+            $scope.addStatus='Success!';
     		$scope.$apply();
 
     		$timeout(function() {
@@ -21,6 +26,10 @@ angular.module('storefrontApp')
 
     		}, 1000);
 
+
     	});
-    }
+
+}
+
+
   });

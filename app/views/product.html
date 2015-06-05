@@ -1,12 +1,11 @@
 <h1>{{product.title}}</h1>
 
-<div class='container'>
 	
 <div ng-bind-html="product.description"></div>
-<strong>{{product.pricing.formatted.without_tax}}</strong>
+<strong>{{product.price.value}}</strong>
 <button ng-if="!addStatus" ng-click="addCart()" class="btn btn-success">Add to cart</button>
 <button ng-if="addStatus"  class="btn btn-warning">{{addStatus}}</button>
-	
-</div>
+
+
 
 
